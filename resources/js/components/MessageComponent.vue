@@ -1,7 +1,9 @@
 <template>
     <div class="card card-default chat-box">
         <div class="card-header">
-            Chats
+            <b :class="{ 'text-danger': session_block }">
+                User Name <span v-if="session_block">(Blocked)</span>
+            </b>
             <a href @click.prevent="close">
                 <i class="fa fa-times float-right"></i>
             </a>
@@ -15,7 +17,20 @@
                     <i class="fa fa-ellipsis-h"></i>
                 </a>
                 <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                    <a class="dropdown-item" href="#">Block</a>
+                    <a
+                        class="dropdown-item"
+                        href="#"
+                        @click.prevent="UnBlock"
+                        v-if="session_block"
+                        >unblock</a
+                    >
+                    <a
+                        class="dropdown-item"
+                        href="#"
+                        @click.prevent="block"
+                        v-else
+                        >Block</a
+                    >
                     <a class="dropdown-item" href="#" @click.prevent="clear"
                         >Clear chat</a
                     >
@@ -33,6 +48,7 @@
                     type="text"
                     class="form-control"
                     placeholder="Write your message here"
+                    :disabled="session_block"
                 />
             </div>
         </form>
@@ -42,7 +58,8 @@
 export default {
     data() {
         return {
-            chats: []
+            chats: [],
+            session_block: false
         };
     },
     methods: {
@@ -54,6 +71,12 @@ export default {
         },
         clear() {
             this.chats = [];
+        },
+        block() {
+            this.session_block = true;
+        },
+        UnBlock() {
+            this.session_block = false;
         }
     },
     created() {

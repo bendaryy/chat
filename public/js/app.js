@@ -2005,10 +2005,27 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
-      chats: []
+      chats: [],
+      session_block: false
     };
   },
   methods: {
@@ -2020,6 +2037,12 @@ __webpack_require__.r(__webpack_exports__);
     },
     clear: function clear() {
       this.chats = [];
+    },
+    block: function block() {
+      this.session_block = true;
+    },
+    UnBlock: function UnBlock() {
+      this.session_block = false;
     }
   },
   created: function created() {
@@ -38198,7 +38221,11 @@ var render = function() {
   var _c = _vm._self._c || _h
   return _c("div", { staticClass: "card card-default chat-box" }, [
     _c("div", { staticClass: "card-header" }, [
-      _vm._v("\n        Chats\n        "),
+      _c("b", { class: { "text-danger": _vm.session_block } }, [
+        _vm._v("\n            User Name "),
+        _vm.session_block ? _c("span", [_vm._v("(Blocked)")]) : _vm._e()
+      ]),
+      _vm._v(" "),
       _c(
         "a",
         {
@@ -38223,9 +38250,35 @@ var render = function() {
             attrs: { "aria-labelledby": "dropdownMenuButton" }
           },
           [
-            _c("a", { staticClass: "dropdown-item", attrs: { href: "#" } }, [
-              _vm._v("Block")
-            ]),
+            _vm.session_block
+              ? _c(
+                  "a",
+                  {
+                    staticClass: "dropdown-item",
+                    attrs: { href: "#" },
+                    on: {
+                      click: function($event) {
+                        $event.preventDefault()
+                        return _vm.UnBlock($event)
+                      }
+                    }
+                  },
+                  [_vm._v("unblock")]
+                )
+              : _c(
+                  "a",
+                  {
+                    staticClass: "dropdown-item",
+                    attrs: { href: "#" },
+                    on: {
+                      click: function($event) {
+                        $event.preventDefault()
+                        return _vm.block($event)
+                      }
+                    }
+                  },
+                  [_vm._v("Block")]
+                ),
             _vm._v(" "),
             _c(
               "a",
@@ -38271,7 +38324,18 @@ var render = function() {
           }
         }
       },
-      [_vm._m(1)]
+      [
+        _c("div", { staticClass: "form-group" }, [
+          _c("input", {
+            staticClass: "form-control",
+            attrs: {
+              type: "text",
+              placeholder: "Write your message here",
+              disabled: _vm.session_block
+            }
+          })
+        ])
+      ]
     )
   ])
 }
@@ -38292,17 +38356,6 @@ var staticRenderFns = [
       },
       [_c("i", { staticClass: "fa fa-ellipsis-h" })]
     )
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "form-group" }, [
-      _c("input", {
-        staticClass: "form-control",
-        attrs: { type: "text", placeholder: "Write your message here" }
-      })
-    ])
   }
 ]
 render._withStripped = true
@@ -50732,8 +50785,8 @@ __webpack_require__.r(__webpack_exports__);
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! G:\projects\chat\resources\js\app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! G:\projects\chat\resources\sass\app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! G:\projects\chat-githup\chat\resources\js\app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! G:\projects\chat-githup\chat\resources\sass\app.scss */"./resources/sass/app.scss");
 
 
 /***/ })
