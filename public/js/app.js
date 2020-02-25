@@ -1959,7 +1959,7 @@ __webpack_require__.r(__webpack_exports__);
       var _this = this;
 
       axios.post("/getFriends").then(function (res) {
-        return _this.friends = res.data;
+        return _this.friends = res.data.data;
       });
     }
   },
@@ -50819,8 +50819,8 @@ __webpack_require__.r(__webpack_exports__);
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! D:\projects\chat\resources\js\app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! D:\projects\chat\resources\sass\app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! E:\projects\chat\resources\js\app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! E:\projects\chat\resources\sass\app.scss */"./resources/sass/app.scss");
 
 
 /***/ })

@@ -46,7 +46,7 @@ export default {
             this.open = false;
         },
         getFriends() {
-            axios.post("/getFriends").then(res => (this.friends = res.data));
+            axios.post("/getFriends").then(res => (this.friends = res.data.data));
         }
     },
     created() {
