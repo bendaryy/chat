@@ -1939,6 +1939,7 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
@@ -38186,33 +38187,34 @@ var render = function() {
             _vm._v("Private Chat App")
           ]),
           _vm._v(" "),
-          _c("ul", { staticClass: "list-group" }, [
-            _c(
-              "a",
-              {
-                attrs: { href: "#" },
-                on: {
-                  click: function($event) {
-                    $event.preventDefault()
+          _c(
+            "ul",
+            { staticClass: "list-group" },
+            _vm._l(_vm.friends, function(friend) {
+              return _c(
+                "a",
+                {
+                  key: friend.id,
+                  attrs: { href: "#" },
+                  on: {
+                    click: function($event) {
+                      $event.preventDefault()
+                    }
                   }
-                }
-              },
-              _vm._l(_vm.friends, function(friend) {
-                return _c(
-                  "li",
-                  { key: friend.id, staticClass: "list-group-item" },
-                  [
+                },
+                [
+                  _c("li", { staticClass: "list-group-item" }, [
                     _vm._v(
                       "\n                            " +
                         _vm._s(friend.name) +
                         "\n                        "
                     )
-                  ]
-                )
-              }),
-              0
-            )
-          ])
+                  ])
+                ]
+              )
+            }),
+            0
+          )
         ])
       ]),
       _vm._v(" "),
