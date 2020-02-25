@@ -1932,11 +1932,19 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
-      open: true
+      open: true,
+      friends: []
     };
   },
   components: {
@@ -1945,13 +1953,22 @@ __webpack_require__.r(__webpack_exports__);
   methods: {
     close: function close() {
       this.open = false;
+    },
+    getFriends: function getFriends() {
+      var _this = this;
+
+      axios.post("/getFriends").then(function (res) {
+        return _this.friends = res.data;
+      });
     }
   },
-  created: function created() {// this.$on("close", () => this.close());
-  },
-  mounted: function mounted() {
-    console.log("Component mounted successfully.");
-  }
+  created: function created() {
+    // this.$on("close", () => this.close());
+    this.getFriends();
+  } // mounted() {
+  //     console.log("Component mounted successfully.");
+  // }
+
 });
 
 /***/ }),
@@ -6601,7 +6618,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, "\n.chat-box[data-v-3f20c7be] {\n    height: 400px;\n}\n.card-body[data-v-3f20c7be] {\n    overflow-y: scroll;\n}\n", ""]);
+exports.push([module.i, "\n.chat-box[data-v-3f20c7be] {\r\n    height: 400px;\n}\n.card-body[data-v-3f20c7be] {\r\n    overflow-y: scroll;\n}\r\n", ""]);
 
 // exports
 
@@ -38163,7 +38180,41 @@ var render = function() {
   var _c = _vm._self._c || _h
   return _c("div", { staticClass: "container" }, [
     _c("div", { staticClass: "row justify-content-center" }, [
-      _vm._m(0),
+      _c("div", { staticClass: "col-md-3" }, [
+        _c("div", { staticClass: "card card-default" }, [
+          _c("div", { staticClass: "card-header" }, [
+            _vm._v("Private Chat App")
+          ]),
+          _vm._v(" "),
+          _c("ul", { staticClass: "list-group" }, [
+            _c(
+              "a",
+              {
+                attrs: { href: "#" },
+                on: {
+                  click: function($event) {
+                    $event.preventDefault()
+                  }
+                }
+              },
+              _vm._l(_vm.friends, function(friend) {
+                return _c(
+                  "li",
+                  { key: friend.id, staticClass: "list-group-item" },
+                  [
+                    _vm._v(
+                      "\n                            " +
+                        _vm._s(friend.name) +
+                        "\n                        "
+                    )
+                  ]
+                )
+              }),
+              0
+            )
+          ])
+        ])
+      ]),
       _vm._v(" "),
       _c(
         "div",
@@ -38178,26 +38229,7 @@ var render = function() {
     ])
   ])
 }
-var staticRenderFns = [
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "col-md-3" }, [
-      _c("div", { staticClass: "card card-default" }, [
-        _c("div", { staticClass: "card-header" }, [_vm._v("Private Chat App")]),
-        _vm._v(" "),
-        _c("ul", { staticClass: "list-group" }, [
-          _c("li", { staticClass: "list-group-item" }, [
-            _vm._v("Cras justo odio")
-          ]),
-          _vm._v(" "),
-          _c("li", { staticClass: "list-group-item" }, [_vm._v("bendary")])
-        ])
-      ])
-    ])
-  }
-]
+var staticRenderFns = []
 render._withStripped = true
 
 
@@ -50785,8 +50817,8 @@ __webpack_require__.r(__webpack_exports__);
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! G:\projects\chat-githup\chat\resources\js\app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! G:\projects\chat-githup\chat\resources\sass\app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! D:\projects\chat\resources\js\app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! D:\projects\chat\resources\sass\app.scss */"./resources/sass/app.scss");
 
 
 /***/ })
