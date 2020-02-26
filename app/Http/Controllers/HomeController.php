@@ -30,6 +30,6 @@ class HomeController extends Controller
     }
     public function getFriends()
     {
-        return userResource::collection(User::all());
+        return userResource::collection(User::where('id','!=' , auth()->id())->get());
     }
 }
