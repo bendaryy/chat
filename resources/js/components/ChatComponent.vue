@@ -20,7 +20,11 @@
                 </div>
             </div>
             <div class="col-md-9">
-                <span v-for="friend in friends" :key="friend.id">
+                <span
+                    v-for="friend in friends"
+                    :key="friend.id"
+                    v-if="friend.session"
+                >
                     <message-component
                         v-if="friend.session.open"
                         @close="close(friend)"
@@ -53,10 +57,19 @@ export default {
                 .then(res => (this.friends = res.data.data));
         },
         openChat(friend) {
-            this.friends.forEach(friend => {
-                friend.session.open = false;
-            });
-            friend.session.open = true;
+            if (friend.session) {
+                this.friends.forEach(friend => {
+                    friend.session.open = false;
+                });
+                friend.session.open = true;
+            } else {
+                this.createSession(friend);
+            }
+        },
+        createSession(friend) {
+            axios
+                .post("/session/create", { friend_id: friend.id })
+                .then(res => (friend.session = res.data));
         }
     },
     created() {
