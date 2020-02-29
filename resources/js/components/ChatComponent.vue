@@ -8,7 +8,7 @@
                     <ul class="list-group">
                         <a
                             href="#"
-                            @click.prevent
+                            @click.prevent="openChat(friend)"
                             v-for="friend in friends"
                             :key="friend.id"
                         >
@@ -20,10 +20,17 @@
                 </div>
             </div>
             <div class="col-md-9">
-                <message-component
-                    v-if="open"
-                    @close="close"
-                ></message-component>
+                <span
+                    v-for="friend in friends"
+                    :key="friend.id"
+                    v-if="friend.session"
+                >
+                    <message-component
+                        v-if="friend.session.open"
+                        @close="close(friend)"
+                        :friend="friend"
+                    ></message-component>
+                </span>
             </div>
         </div>
     </div>
@@ -34,7 +41,6 @@ import MessageComponent from "./MessageComponent";
 export default {
     data() {
         return {
-            open: true,
             friends: []
         };
     },
@@ -42,11 +48,28 @@ export default {
         MessageComponent
     },
     methods: {
-        close() {
-            this.open = false;
+        close(friend) {
+            friend.session.open = false;
         },
         getFriends() {
-            axios.post("/getFriends").then(res => (this.friends = res.data));
+            axios
+                .post("/getFriends")
+                .then(res => (this.friends = res.data.data));
+        },
+        openChat(friend) {
+            if (friend.session) {
+                this.friends.forEach(friend => {
+                    friend.session.open = false;
+                });
+                friend.session.open = true;
+            } else {
+                this.createSession(friend);
+            }
+        },
+        createSession(friend) {
+            axios
+                .post("/session/create", { friend_id: friend.id })
+                .then(res => (friend.session = res.data));
         }
     },
     created() {
