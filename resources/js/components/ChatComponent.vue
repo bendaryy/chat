@@ -77,6 +77,15 @@ export default {
     created() {
         // this.$on("close", () => this.close());
         this.getFriends();
+        Echo.join(`Chat`).here(users => {
+            this.friends.forEach(friend => {
+                users.forEach(user => {
+                    if (user.id == friend.id) {
+                        friend.online = true;
+                    }
+                });
+            });
+        });
     }
     // mounted() {
     //     console.log("Component mounted successfully.");
