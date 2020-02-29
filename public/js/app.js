@@ -6619,7 +6619,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, "\n.chat-box[data-v-3f20c7be] {\r\n    height: 400px;\n}\n.card-body[data-v-3f20c7be] {\r\n    overflow-y: scroll;\n}\r\n", ""]);
+exports.push([module.i, "\n.chat-box[data-v-3f20c7be] {\n    height: 400px;\n}\n.card-body[data-v-3f20c7be] {\n    overflow-y: scroll;\n}\n", ""]);
 
 // exports
 
@@ -50819,8 +50819,8 @@ __webpack_require__.r(__webpack_exports__);
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! D:\projects\chat\resources\js\app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! D:\projects\chat\resources\sass\app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! G:\projects\chat-githup\chat\resources\js\app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! G:\projects\chat-githup\chat\resources\sass\app.scss */"./resources/sass/app.scss");
 
 
 /***/ })
