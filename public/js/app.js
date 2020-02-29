@@ -1982,7 +1982,7 @@ __webpack_require__.r(__webpack_exports__);
       axios.post("/session/create", {
         friend_id: friend.id
       }).then(function (res) {
-        return friend.session = res.data;
+        friend.session = res.data, friend.session.open = true;
       });
     }
   },
@@ -6643,7 +6643,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, "\n.chat-box[data-v-3f20c7be] {\n    height: 400px;\n}\n.card-body[data-v-3f20c7be] {\n    overflow-y: scroll;\n}\n", ""]);
+exports.push([module.i, "\n.chat-box[data-v-3f20c7be] {\r\n    height: 400px;\n}\n.card-body[data-v-3f20c7be] {\r\n    overflow-y: scroll;\n}\r\n", ""]);
 
 // exports
 
