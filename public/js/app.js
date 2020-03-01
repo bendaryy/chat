@@ -1946,7 +1946,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
@@ -1998,6 +1997,14 @@ __webpack_require__.r(__webpack_exports__);
             friend.online = true;
           }
         });
+      });
+    }).joining(function (user) {
+      _this2.friends.forEach(function (friend) {
+        return user.id == friend.id ? friend.online = true : "";
+      });
+    }).leaving(function (user) {
+      _this2.friends.forEach(function (friend) {
+        return user.id == friend.id ? friend.online = false : "";
       });
     });
   } // mounted() {
@@ -48133,10 +48140,10 @@ var render = function() {
             { staticClass: "list-group" },
             _vm._l(_vm.friends, function(friend) {
               return _c(
-                "a",
+                "li",
                 {
                   key: friend.id,
-                  attrs: { href: "#" },
+                  staticClass: "list-group-item",
                   on: {
                     click: function($event) {
                       $event.preventDefault()
@@ -48145,13 +48152,16 @@ var render = function() {
                   }
                 },
                 [
-                  _c("li", { staticClass: "list-group-item" }, [
-                    _vm._v(
-                      "\n                            " +
-                        _vm._s(friend.name) +
-                        "\n                        "
-                    )
-                  ])
+                  _c("a", { attrs: { href: "" } }, [
+                    _vm._v(" " + _vm._s(friend.name))
+                  ]),
+                  _vm._v(" "),
+                  friend.online
+                    ? _c("i", {
+                        staticClass: "fa fa-circle float-right text-success",
+                        attrs: { "aria-hidden": "true" }
+                      })
+                    : _vm._e()
                 ]
               )
             }),
@@ -60783,8 +60793,8 @@ __webpack_require__.r(__webpack_exports__);
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! G:\projects\chat-githup\chat\resources\js\app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! G:\projects\chat-githup\chat\resources\sass\app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! D:\projects\chat\resources\js\app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! D:\projects\chat\resources\sass\app.scss */"./resources/sass/app.scss");
 
 
 /***/ })
